@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitClub Admin - Activités</title>
+    <!-- Use root relative paths to share global variable bindings -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+    
+    <main class="admin-main">
+        <header class="admin-header">
+            <h2>Gestion des Activités</h2>
+            <div class="admin-user-info">
+                <a href="/" title="Retour à l'accueil">
+                    <img src="/assets/icons/shield-user.png" alt="Admin" style="height: 24px; vertical-align: middle; margin-right: 8px;">
+                </a>
+                <span>Admin</span>
+            </div>
+        </header>
+
+        <div class="admin-content">
+            <div class="admin-actions-bar">
+                <form id="admin-filters-form" class="admin-filters">
+                    <input type="text" id="search-title" placeholder="Rechercher une activité..." class="admin-input">
+                    <select id="filter-type" class="admin-input">
+                        <option value="">Tous les types</option>
+                        <option value="1">Cardio</option>
+                        <option value="2">Renforcement</option>
+                        <option value="3">Détente</option>
+                    </select>
+                </form>
+                <a href="/admin/activity-form.html" class="btn-primary btn-add">+ Nouvelle Activité</a>
+            </div>
+
+            <div class="table-responsive">
+                <table class="admin-table" id="activities-table">
+                    <thead>
+                        <tr>
+                            <th>Photo</th>
+                            <th>Titre</th>
+                            <th>Type</th>
+                            <th>Objectif</th>
+                            <th>Durée</th>
+                            <th>Intensité</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activities-table-body">
+                        <tr>
+                            <td colspan="7" style="text-align:center; padding: 30px;">Aucune activité disponible pour l'instant.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="admin-message" class="admin-message" style="display: none;"></div>
+        </div>
+    </main>
+
+    <script type="module" src="/js/admin/activities.js"></script>
+</body>
+</html>

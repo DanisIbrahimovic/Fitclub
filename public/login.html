@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitClub - Connexion</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo"><img src="/assets/logo/FITCLUB.png" alt="FitClub Logo" class="brand-logo"></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="/activities.html">Activités</a></li>
+                    <li><a href="/planning.html">Planning</a></li>
+                </ul>
+            </nav>
+            <div class="auth-section">
+                <a href="/login.html" class="active btn-login">Connexion</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="auth-page">
+        <section class="auth-container">
+            <h2>Connexion</h2>
+            <form id="login-form" class="auth-form">
+                <div class="form-group">
+                    <label for="email">Adresse Email</label>
+                    <input type="email" id="email" name="email" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Mot de passe</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                </div>
+                <div class="auth-actions">
+                    <button type="submit" class="btn-primary">Se connecter</button>
+                </div>
+                <p class="auth-redirect">
+                    Pas encore de compte ? <a href="/register.html">Inscrivez-vous ici</a>.
+                </p>
+                <div id="auth-error" class="error-message"></div>
+            </form>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 FitClub. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- JS module for authentication logic -->
+    <script type="module">
+        import { loginUser, updateNavbar } from './js/auth.js';
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            updateNavbar();
+            const form = document.getElementById('login-form');
+            const errorContainer = document.getElementById('auth-error');
+
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                const email = document.getElementById('email').value.trim();
+                const password = document.getElementById('password').value;
+
+                // Reset error state
+                errorContainer.style.display = 'none';
+                errorContainer.textContent = '';
+
+                try {
+                    const response = await loginUser(email, password);
+                    
+                    if (response && response.data && response.data.token) {
+                        sessionStorage.setItem('token', response.data.token);
+                        
+                        // Check if redirect query param exists
+                        const urlParams = new URLSearchParams(window.location.search);
+                        const redirectUrl = urlParams.get('redirect') || '/';
+                        window.location.href = redirectUrl;
+                    } else if (response && response.token) {
+                        // Fallback si jamais la structure est différente
+                        sessionStorage.setItem('token', response.token);
+                        window.location.href = '/';
+                    } else {
+                        throw new Error(response.message || 'Identifiants incorrects.');
+                    }
+                } catch (error) {
+                    console.error('Erreur de connexion:', error);
+                    errorContainer.textContent = error.message || 'Une erreur est survenue lors de la connexion.';
+                    errorContainer.style.display = 'block';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

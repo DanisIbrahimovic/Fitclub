@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitClub Admin - Formulaire Activité</title>
+    <!-- Use root relative paths to share global variable bindings -->
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/admin.css">
+</head>
+<body class="admin-body">
+    
+    <main class="admin-main">
+        <header class="admin-header">
+            <h2>Formulaire Activité</h2>
+            <div class="admin-user-info">
+                <a href="/" title="Retour à l'accueil">
+                    <img src="/assets/icons/shield-user.png" alt="Admin" style="height: 24px; vertical-align: middle; margin-right: 8px;">
+                </a>
+                <span>Admin</span>
+            </div>
+        </header>
+
+        <div class="admin-content">
+            <div class="admin-top-bar">
+                <a href="/admin/activities.html" class="btn-secondary">← Retour</a>
+            </div>
+            
+            <div class="admin-form-container">
+                <h3 id="form-title">Créer une nouvelle activité</h3>
+                
+                <form id="activity-form" enctype="multipart/form-data">
+                    <div class="admin-form-group">
+                        <label for="title">Titre de l'activité</label>
+                        <input type="text" id="title" name="title" class="admin-form-control" required placeholder="Ex: Yoga Dynamique">
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" name="description" class="admin-form-control" required placeholder="Description détaillée du cours..."></textarea>
+                    </div>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="activitytypeid">Type d'Activité</label>
+                            <select id="activitytypeid" name="activitytypeid" class="admin-form-control" required>
+                                <option value="">Sélectionner un type</option>
+                                <option value="1">Cardio</option>
+                                <option value="2">Renforcement</option>
+                                <option value="3">Détente</option>
+                            </select>
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="objectiveid">Objectif / Cible</label>
+                            <select id="objectiveid" name="objectiveid" class="admin-form-control" required>
+                                <option value="">Sélectionner un objectif</option>
+                                <option value="1">Perte de poids</option>
+                                <option value="2">Prise de masse</option>
+                                <option value="3">Souplesse</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="admin-form-row">
+                        <div class="admin-form-group">
+                            <label for="durationminutes">Durée (minutes)</label>
+                            <input type="number" id="durationminutes" name="durationminutes" class="admin-form-control" required min="15" step="5" placeholder="Ex: 45">
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="intensity">Intensité (1 à 5)</label>
+                            <input type="number" id="intensity" name="intensity" class="admin-form-control" required min="1" max="5" placeholder="Ex: 3">
+                        </div>
+                        <div class="admin-form-group">
+                            <label for="calories">Calories estimées</label>
+                            <input type="number" id="calories" name="calories" class="admin-form-control" required min="50" step="10" placeholder="Ex: 400">
+                        </div>
+                    </div>
+
+                    <div class="admin-form-group">
+                        <label for="photo">Photo de couverture</label>
+                        <input type="file" id="photo" name="photo" class="admin-form-control" accept="image/jpeg, image/png, image/webp">
+                        <small style="color: #666; margin-top: 5px; display: block;">Laissez vide pour conserver l'image actuelle (en cas de modification).</small>
+                    </div>
+
+                    <div id="form-error" class="error-message" style="display: none;"></div>
+
+                    <div class="admin-form-actions">
+                        <button type="submit" class="btn-primary" id="btn-save">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="/js/admin/activity-form.js"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitClub - Planning</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo"><img src="/assets/logo/FITCLUB.png" alt="FitClub Logo" class="brand-logo"></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/">Accueil</a></li>
+                    <li><a href="/activities.html">Activités</a></li>
+                    <li><a href="/planning.html">Planning</a></li>
+                </ul>
+            </nav>
+            <div class="auth-section">
+                <a href="/admin/activities.html" class="admin-btn" title="Espace Administrateur"><img src="/assets/icons/shield-user.png" alt="Admin" style="height: 24px; vertical-align: middle;"></a>
+                <a href="/login.html" class="btn-login">Connexion</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="container page-content">
+        <div class="page-header">
+            <h2>Planning des Cours</h2>
+            <p>L'affichage et la réservation des cours sont temporairement désactivés.</p>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 FitClub. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Script placeholder for business logic -->
+    <!-- <script type="module" src="/js/planning.js"></script> -->
+    <script type="module">
+        import { updateNavbar } from '/js/auth.js';
+        updateNavbar();
+    </script>
+</body>
+</html>

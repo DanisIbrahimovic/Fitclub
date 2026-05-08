@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitClub - Accueil</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo"><img src="/assets/logo/FITCLUB.png" alt="FitClub Logo" class="brand-logo"></a>
+            <nav>
+                <ul class="nav-links">
+                    <li><a href="/" class="active">Accueil</a></li>
+                    <li><a href="/activities.html">Activités</a></li>
+                    <li><a href="/planning.html">Planning</a></li>
+                </ul>
+            </nav>
+            <div class="auth-section">
+                <a href="/admin/activities.html" class="admin-btn" title="Espace Administrateur"><img src="/assets/icons/shield-user.png" alt="Admin" style="height: 24px; vertical-align: middle;"></a>
+                <a href="/login.html" class="btn-login">Connexion</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Dépassez vos limites avec FitClub</h1>
+                <p>Rejoignez le meilleur club de fitness et atteignez vos objectifs avec nos experts en vous inscrivant dès aujourd'hui.</p>
+                <a href="/activities.html" class="btn-primary">Voir les activités</a>
+            </div>
+        </section>
+
+        <section class="features container">
+            <h2 class="section-title">Pourquoi choisir FitClub ?</h2>
+            <div class="cards-grid">
+                <article class="card">
+                    <img class="card-icon" src="/assets/icons/clock.png" alt="Clock">
+                    <h3>Horaires Flexibles</h3>
+                    <p>Ouvert 7j/7 de 6h00 à 23h00 pour s'adapter à votre emploi du temps, car chaque minute compte.</p>
+                </article>
+                <article class="card">
+                    <img class="card-icon" src="/assets/icons/dumbbell.png" alt="Dumbbell">
+                    <h3>Équipements Premium</h3>
+                    <p>Des de machines dernière génération et du matériel pour un entraînement optimal de vos muscles.</p>
+                </article>
+                <article class="card">
+                    <img class="card-icon" src="/assets/icons/users.png" alt="Users">
+                    <h3>Cours Collectifs</h3>
+                    <p>Plus de 50 cours par semaine animés par des coachs passionnés pour la motivation.</p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 FitClub. Tous droits réservés.</p>
+        </div>
+    </footer>
+
+    <!-- Script de session -->
+    <script type="module">
+        import { updateNavbar } from '/js/auth.js';
+        updateNavbar();
+    </script>
+</body>
+</html>
