@@ -214,6 +214,7 @@ nav {
 /* Responsive constraints */
 @media (max-width: 768px) {
     .nav-container {
+        display: flex;
         flex-direction: column;
         align-items: center;
         gap: 15px;
@@ -224,6 +225,7 @@ nav {
         flex-direction: column;
         justify-content: center;
         gap: 10px;
+        align-items: center;
     }
     .auth-section {
         flex-direction: column;
