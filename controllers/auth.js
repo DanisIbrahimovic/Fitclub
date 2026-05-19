@@ -64,15 +64,27 @@ export const login = async (req, res) => {
       { expiresIn: process.env.JWT_EXPIRES_IN || '24h' }
     );
 
+    res.cookie('token', token, {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'strict',
+      maxAge: 24 * 60 * 60 * 1000 // 24 heures
+    });
+
     return res.status(200).json({
       success: true,
       message: 'Connexion réussie',
-      data: { token, user: { id: user.id, email: user.email, role: user.role } },
+      data: { user: { id: user.id, email: user.email, role: user.role } },
     });
   } catch (error) {
     console.error('login error:', error);
     return res.status(500).json({ success: false, message: 'Erreur serveur' });
   }
+};
+
+export const logout = (req, res) => {
+  res.clearCookie('token');
+  return res.status(200).json({ success: true, message: 'Déconnexion réussie' });
 };
 
 export const changePassword = async (req, res) => {

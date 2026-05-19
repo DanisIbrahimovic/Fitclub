@@ -74,16 +74,16 @@
                 try {
                     const response = await loginUser(email, password);
                     
-                    if (response && response.data && response.data.token) {
-                        sessionStorage.setItem('token', response.data.token);
+                    if (response && response.data && response.data.user) {
+                        sessionStorage.setItem('user', JSON.stringify(response.data.user));
                         
                         // Check if redirect query param exists
                         const urlParams = new URLSearchParams(window.location.search);
                         const redirectUrl = urlParams.get('redirect') || '/';
                         window.location.href = redirectUrl;
-                    } else if (response && response.token) {
+                    } else if (response && response.user) {
                         // Fallback si jamais la structure est différente
-                        sessionStorage.setItem('token', response.token);
+                        sessionStorage.setItem('user', JSON.stringify(response.user));
                         window.location.href = '/';
                     } else {
                         throw new Error(response.message || 'Identifiants incorrects.');

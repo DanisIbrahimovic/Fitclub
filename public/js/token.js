@@ -1,18 +1,16 @@
+import { apiPost } from './api.js';
+
 /**
- * Décode le payload d'un JWT stocké dans sessionStorage.
- * @returns {object} Le payload décodé, ou null si le token est absent/invalide.
+ * Récupère les informations de l'utilisateur stockées.
+ * @returns {object} Le payload de l'utilisateur, ou null si l'utilisateur est déconnecté.
  */
 export function getTokenPayload() {
-  const token = sessionStorage.getItem('token');
-  if (!token) return null;
+  const user = sessionStorage.getItem('user');
+  if (!user) return null;
   try {
-    const b64 = token.split('.')[1].replace(/-/g, '+').replace(/_/g, '/');
-    const json = decodeURIComponent(
-      atob(b64).split('').map(c => '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2)).join('')
-    );
-    return JSON.parse(json);
+    return JSON.parse(user);
   } catch {
-    sessionStorage.removeItem('token');
+    sessionStorage.removeItem('user');
     return null;
   }
 }
@@ -32,7 +30,12 @@ export function requireAdmin() {
 /**
  * Déconnecte l'utilisateur et redirige vers la page de login.
  */
-export function logout() {
-  sessionStorage.removeItem('token');
+export async function logout() {
+  try {
+    await apiPost('/auth/logout');
+  } catch (error) {
+    console.error('Erreur lors de la déconnexion', error);
+  }
+  sessionStorage.removeItem('user');
   window.location.href = '/login.html';
 }

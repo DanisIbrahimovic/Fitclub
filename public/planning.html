@@ -14,7 +14,7 @@
                 <ul class="nav-links">
                     <li><a href="/">Accueil</a></li>
                     <li><a href="/activities.html">Activités</a></li>
-                    <li><a href="/planning.html">Planning</a></li>
+                    <li><a href="/planning.html" class="active">Planning</a></li>
                 </ul>
             </nav>
             <div class="auth-section">
@@ -27,8 +27,30 @@
     <main class="container page-content">
         <div class="page-header">
             <h2>Planning des Cours</h2>
-            <p>L'affichage et la réservation des cours sont temporairement désactivés.</p>
+            <p>Réservez votre prochain cours collectif. Les réservations sont ouvertes sur 8 jours.</p>
         </div>
+
+        <section class="filters-section" style="margin-bottom: 30px;">
+            <form id="planning-filters" class="filters-form" style="justify-content: flex-start;">
+                <div class="filter-group" style="flex: 1; max-width: 300px;">
+                    <label for="filter-activity">Filtrer par activité</label>
+                    <select id="filter-activity" name="filter-activity">
+                        <option value="">Toutes les activités</option>
+                    </select>
+                </div>
+            </form>
+        </section>
+
+        <section class="planning-section">
+            <div class="date-selector" id="date-selector">
+                <!-- Dates générées dynamiquement par JS -->
+            </div>
+
+            <div class="course-list" id="schedule-grid">
+                <!-- Planning généré dynamiquement par JS -->
+                <p style="text-align: center; grid-column: 1 / -1; padding: 40px;">Aucun cours programmé pour cette date.</p>
+            </div>
+        </section>
     </main>
 
     <footer class="footer">
@@ -38,7 +60,7 @@
     </footer>
 
     <!-- Script placeholder for business logic -->
-    <!-- <script type="module" src="/js/planning.js"></script> -->
+    <script type="module" src="/js/planning.js"></script>
     <script type="module">
         import { updateNavbar } from '/js/auth.js';
         updateNavbar();

@@ -1,21 +1,19 @@
 /**
  * Base helper for API requests.
- * Automatically adds Authorization token from sessionStorage
+ * Automatically adds credentials for httpOnly cookies
  * and handles JSON parsing / error throwing.
  */
 async function apiFetch(endpoint, options = {}) {
-  const token = sessionStorage.getItem('token');
   const headers = { ...options.headers };
-
-  if (token) {
-    headers['Authorization'] = `Bearer ${token}`;
-  }
 
   // Set Content-Type to application/json if body is present and not FormData
   if (options.body && !(options.body instanceof FormData)) {
     headers['Content-Type'] = 'application/json';
     options.body = JSON.stringify(options.body);
   }
+
+  // Ensure cookies are sent (for HttpOnly JWT)
+  options.credentials = 'same-origin';
 
   const response = await fetch(`/api${endpoint}`, {
     ...options,
