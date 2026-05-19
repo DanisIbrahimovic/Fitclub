@@ -215,17 +215,29 @@ nav {
 @media (max-width: 768px) {
     .nav-container {
         flex-direction: column;
+        align-items: center;
         gap: 15px;
+        padding: 10px;
     }
     .nav-links {
         flex-wrap: wrap;
+        flex-direction: column;
         justify-content: center;
+        gap: 10px;
+    }
+    .auth-section {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
     .hero-content h1 {
         font-size: 2.2rem;
     }
     .hero {
-        padding: 80px 20px;
+        padding: 60px 15px;
+    }
+    .auth-container {
+        padding: 20px;
     }
 }
 
@@ -620,10 +632,25 @@ nav {
     
     .course-time {
         flex: auto;
+        border-right: none;
+        border-bottom: 2px solid #eee;
+        padding-right: 0;
+        padding-bottom: 15px;
+        width: 100%;
+        text-align: center;
     }
     
     .course-details {
         padding: 0;
+        width: 100%;
+    }
+
+    .course-details h3 {
+        justify-content: center;
+    }
+    
+    .course-room {
+        text-align: center;
     }
     
     .course-booking {
@@ -634,6 +661,10 @@ nav {
     
     .course-booking .places-left {
         text-align: center;
+    }
+
+    .course-card .btn-reserve {
+        width: 100%;
     }
 }
 

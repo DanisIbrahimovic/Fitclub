@@ -230,21 +230,51 @@
 }
 
 @media (max-width: 768px) {
-    .admin-sidebar {
-        transform: translateX(-100%);
+    .admin-layout {
+        flex-direction: column;
     }
     
-    .admin-sidebar.show {
-        transform: translateX(0);
+    .admin-sidebar {
+        width: 100%;
+        min-height: auto;
+        position: static;
     }
     
     .admin-main {
         margin-left: 0;
         width: 100%;
+        padding: 15px;
     }
     
-    .mobile-menu-btn {
-        display: block;
+    .admin-nav {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    
+    .admin-nav li {
+        flex: 1 1 auto;
+        margin-bottom: 0;
+    }
+    
+    .admin-table {
+        min-width: 600px; /* Forces scroll on mobile gracefully */
+    }
+    
+    .admin-actions-bar {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .admin-filters {
+        flex-direction: column;
+        width: 100%;
+        gap: 10px;
+    }
+    
+    .admin-form-container {
+        padding: 15px;
     }
 }
 
